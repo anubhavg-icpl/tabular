@@ -6,7 +6,9 @@ use std::path::Path;
 pub struct CsvService;
 
 impl CsvService {
-    pub fn read_csv_data<P: AsRef<Path>>(file_path: P) -> Result<Vec<Vec<String>>, Box<dyn std::error::Error>> {
+    pub fn read_csv_data<P: AsRef<Path>>(
+        file_path: P,
+    ) -> Result<Vec<Vec<String>>, Box<dyn std::error::Error>> {
         let file = File::open(file_path)?;
         let reader = BufReader::new(file);
         let mut csv_reader = Reader::from_reader(reader);
@@ -87,7 +89,9 @@ impl CsvService {
                 let sum: f64 = numeric_values.iter().sum();
                 let avg = sum / numeric_values.len() as f64;
                 let min = numeric_values.iter().fold(f64::INFINITY, |a, &b| a.min(b));
-                let max = numeric_values.iter().fold(f64::NEG_INFINITY, |a, &b| a.max(b));
+                let max = numeric_values
+                    .iter()
+                    .fold(f64::NEG_INFINITY, |a, &b| a.max(b));
 
                 analysis.numeric_columns.push(ColumnStats {
                     name: analysis.headers[col_idx].clone(),
@@ -99,11 +103,22 @@ impl CsvService {
             }
 
             // Store category counts for charts
-            if categories.len() <= 20 {  // Only for reasonable number of categories
-                analysis.categorical_columns.push(CategoryStats {
-                    name: analysis.headers[col_idx].clone(),
-                    categories,
-                });
+            // Skip columns with too many unique values (like timestamps, IDs)
+            if categories.len() > 1 && categories.len() <= 10 {
+                // Only for reasonable number of categories
+                // Skip columns that look like timestamps or IDs
+                let col_name = analysis.headers[col_idx].to_lowercase();
+                if !col_name.contains("timestamp")
+                    && !col_name.contains("time")
+                    && !col_name.contains("date")
+                    && !col_name.contains("_id")
+                    && !col_name.contains("id")
+                {
+                    analysis.categorical_columns.push(CategoryStats {
+                        name: analysis.headers[col_idx].clone(),
+                        categories,
+                    });
+                }
             }
         }
 

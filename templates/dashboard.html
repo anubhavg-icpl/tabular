@@ -169,7 +169,7 @@
     <!-- Charts Section -->
     <div class="charts-grid">
         {% for cat_col in analysis.categorical_columns %}
-            {% if loop.index <= 4 %}
+            {% if loop.index <= 3 %}
             <div class="chart-container">
                 <div class="chart-title">{{ cat_col.name }} Distribution</div>
                 <canvas id="chart-{{ loop.index }}"></canvas>
@@ -241,12 +241,14 @@
 
         // Render categorical charts
         {% for cat_col in analysis.categorical_columns %}
-            {% if loop.index <= 4 %}
+            {% if loop.index <= 3 %}
             {
                 const ctx = document.getElementById('chart-{{ loop.index }}').getContext('2d');
                 const data = {{ cat_col.categories | json_encode | safe }};
-                const labels = Object.keys(data).slice(0, 10);
-                const values = labels.map(k => data[k]);
+                // Sort by value and take top items
+                const sorted = Object.entries(data).sort((a, b) => b[1] - a[1]).slice(0, 8);
+                const labels = sorted.map(e => e[0].length > 20 ? e[0].substring(0, 20) + '...' : e[0]);
+                const values = sorted.map(e => e[1]);
 
                 new Chart(ctx, {
                     type: '{% if loop.index is odd %}doughnut{% else %}bar{% endif %}',
