@@ -30,9 +30,7 @@ impl CsvService {
 
     pub fn get_available_datasets() -> Vec<(String, String)> {
         vec![
-            ("security_alerts".to_string(), "data/security_alerts.csv".to_string()),
-            ("vulnerabilities".to_string(), "data/vulnerability_scan.csv".to_string()),
-            ("threat_intel".to_string(), "data/threat_intelligence.csv".to_string()),
+            ("security_logs".to_string(), "data/data.csv".to_string()),
         ]
     }
 }

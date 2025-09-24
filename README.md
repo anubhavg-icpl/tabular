@@ -33,7 +33,6 @@ cargo run
 csv-dashboard/
 ├── src/
 │   ├── main.rs        # Application server
-│   └── data.csv       # Sample data
 ├── templates/
 │   └── dashboard.html # Dashboard template
 └── Cargo.toml         # Dependencies

@@ -1,8 +1,8 @@
 mod config;
 mod handlers;
-mod models;
 mod routes;
 mod services;
+mod template_engine;
 
 use actix_web::{middleware, App, HttpServer};
 use config::ServerConfig;

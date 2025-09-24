@@ -21,15 +21,14 @@ impl ServerConfig {
     }
 
     pub fn display_info(&self) {
-        println!("╔══════════════════════════════════════════════════╗");
-        println!("║        🛡️  Security Dashboard Server             ║");
-        println!("╠══════════════════════════════════════════════════╣");
-        println!("║ 📊 Server: http://{}:{:<26} ║", self.host, self.port);
-        println!("║ 📁 Available Endpoints:                          ║");
-        println!("║    • /datasets → View all security datasets      ║");
-        println!("║    • /dashboard → Security alerts (default)      ║");
-        println!("║    • /dashboard?file=data/vulnerability_scan.csv ║");
-        println!("║    • /dashboard?file=data/threat_intelligence.csv║");
-        println!("╚══════════════════════════════════════════════════╝");
+        println!("╔═══════════════════════════════════════════╗");
+        println!("║      🚀 Tabular Dashboard Server          ║");
+        println!("╠═══════════════════════════════════════════╣");
+        println!("║ 📊 Server: http://{}:{:<18} ║", self.host, self.port);
+        println!("║ 📁 Endpoints:                             ║");
+        println!("║    • /          → Dashboard               ║");
+        println!("║    • /dashboard → Data view               ║");
+        println!("║    • /datasets  → Available datasets      ║");
+        println!("╚═══════════════════════════════════════════╝");
     }
 }

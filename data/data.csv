@@ -1,0 +1,21 @@
+ID,Timestamp,Type,Source,Target,Protocol,Port,Action,Severity,Description
+NET-001,2024-01-15 08:23:45,Firewall,192.168.1.105,10.0.0.1,TCP,22,Blocked,High,SSH brute force attempt detected
+NET-002,2024-01-15 08:24:12,IDS,172.16.0.50,External,HTTP,80,Alert,Medium,SQL injection pattern detected
+NET-003,2024-01-15 08:25:30,Antivirus,Workstation-23,Local,File,N/A,Quarantined,Critical,Ransomware variant detected
+NET-004,2024-01-15 08:26:00,Proxy,10.10.10.100,blocked.site,HTTPS,443,Denied,Low,Blocked category violation
+NET-005,2024-01-15 08:27:15,SIEM,Multiple,Database-01,TCP,3306,Investigate,High,Unusual database access pattern
+NET-006,2024-01-15 08:28:45,Firewall,203.0.113.45,DMZ-Server,UDP,53,Allowed,Info,DNS query from external source
+NET-007,2024-01-15 08:30:00,IDS,10.0.50.200,10.0.50.1,ICMP,N/A,Alert,Low,Ping sweep detected on subnet
+NET-008,2024-01-15 08:31:30,Email Security,External,mail.company.com,SMTP,25,Blocked,High,Phishing attempt with malicious attachment
+NET-009,2024-01-15 08:33:00,WAF,198.51.100.75,WebApp-01,HTTPS,443,Blocked,Medium,XSS attempt in form submission
+NET-010,2024-01-15 08:34:15,Endpoint,Laptop-042,C2-Server,TCP,4444,Blocked,Critical,Command and control communication attempt
+NET-011,2024-01-15 08:35:45,Network Monitor,Switch-Core,Multiple,STP,N/A,Alert,Medium,Spanning tree topology change detected
+NET-012,2024-01-15 08:37:00,DLP,User-johnd,External,HTTPS,443,Blocked,High,Sensitive data exfiltration attempt
+NET-013,2024-01-15 08:38:30,Firewall,10.20.30.40,Internet,TCP,445,Blocked,Critical,SMB exploit attempt detected
+NET-014,2024-01-15 08:40:00,SIEM,VPN-Gateway,Multiple,OpenVPN,1194,Monitor,Low,Multiple failed VPN authentications
+NET-015,2024-01-15 08:41:15,IDS,192.168.100.50,Broadcast,ARP,N/A,Alert,Medium,ARP spoofing detected
+NET-016,2024-01-15 08:42:45,Antivirus,Server-DB02,Local,Memory,N/A,Cleaned,High,Memory injection attempt blocked
+NET-017,2024-01-15 08:44:00,Proxy,10.0.0.250,Malware-C2,HTTPS,443,Blocked,Critical,Known malware communication blocked
+NET-018,2024-01-15 08:45:30,Email Security,Internal,External,SMTP,587,Alert,Medium,Potential data leak via email
+NET-019,2024-01-15 08:47:00,WAF,Scanner,API-Gateway,HTTPS,443,Rate-Limited,Low,API scanning detected
+NET-020,2024-01-15 08:48:15,Network Monitor,Router-Edge,Multiple,BGP,179,Alert,High,BGP route hijack attempt detected

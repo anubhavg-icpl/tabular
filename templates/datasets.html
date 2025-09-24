@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Available Datasets{% endblock title %}
+
+{% block container_width %}600px{% endblock %}
+
+{% block extra_styles %}
+    .dataset-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .dataset-item {
+        background: white;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+
+    .dataset-item:hover {
+        transform: translateX(10px);
+    }
+
+    a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .dataset-path {
+        font-size: 0.85em;
+        color: #666;
+        margin-top: 5px;
+    }
+{% endblock extra_styles %}
+
+{% block content %}
+    <h1>📊 Available Datasets</h1>
+    <ul class="dataset-list">
+        {% for dataset in datasets %}
+            <li class="dataset-item">
+                <a href="/dashboard?file={{ dataset.path }}">
+                    🗂️ {{ dataset.name | upper | replace(from="_", to=" ") }}
+                </a>
+                <div class="dataset-path">{{ dataset.path }}</div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
