@@ -1,15 +1,24 @@
 use actix_web::{web, HttpResponse};
 use tera::Context;
+use std::path::Path;
 
 use crate::services::CsvService;
 use crate::template_engine::TEMPLATES;
 
 pub async fn dashboard_handler(dataset: web::Query<DatasetQuery>) -> HttpResponse {
-    let file_path = dataset.file.as_deref().unwrap_or("data/data.csv");
+    let default_file = CsvService::get_available_datasets()
+        .first()
+        .map(|(_, path)| path.clone())
+        .unwrap_or_else(|| "data/data.csv".to_string());
+
+    let file_path = dataset.file.as_deref().unwrap_or(&default_file);
 
     match CsvService::read_csv_data(file_path) {
         Ok(csv_data) => {
             let mut context = Context::new();
+
+            // Analyze the data for charts and statistics
+            let analysis = CsvService::analyze_csv_data(&csv_data);
 
             // Split headers and data
             let (headers, data) = if !csv_data.is_empty() {
@@ -20,9 +29,17 @@ pub async fn dashboard_handler(dataset: web::Query<DatasetQuery>) -> HttpRespons
                 (vec![], vec![])
             };
 
-            context.insert("title", "Security Dashboard");
+            // Get filename for display
+            let filename = Path::new(file_path)
+                .file_stem()
+                .and_then(|s| s.to_str())
+                .unwrap_or("data");
+
+            context.insert("title", "Data Analytics Dashboard");
+            context.insert("filename", filename);
             context.insert("headers", &headers);
             context.insert("data", &data);
+            context.insert("analysis", &analysis);
 
             match TEMPLATES.render("dashboard.html", &context) {
                 Ok(html) => HttpResponse::Ok().content_type("text/html").body(html),
@@ -35,7 +52,7 @@ pub async fn dashboard_handler(dataset: web::Query<DatasetQuery>) -> HttpRespons
         Err(err) => {
             eprintln!("CSV reading error from {}: {}", file_path, err);
             let mut context = Context::new();
-            context.insert("title", "Security Dashboard");
+            context.insert("title", "Data Analytics Dashboard");
             context.insert("headers", &Vec::<String>::new());
             context.insert("data", &Vec::<Vec<String>>::new());
 

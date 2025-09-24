@@ -1,0 +1,13 @@
+Month,Revenue,Expenses,Profit,Units Sold,Region,Customer Type
+January,125000,75000,50000,450,North,Enterprise
+February,135000,80000,55000,490,North,Enterprise
+March,145000,85000,60000,520,South,SMB
+April,155000,90000,65000,560,South,Enterprise
+May,165000,95000,70000,600,East,Enterprise
+June,175000,100000,75000,640,East,SMB
+July,185000,105000,80000,680,West,Enterprise
+August,195000,110000,85000,720,West,SMB
+September,205000,115000,90000,760,North,Enterprise
+October,215000,120000,95000,800,North,SMB
+November,225000,125000,100000,840,South,Enterprise
+December,235000,130000,105000,880,South,SMB
