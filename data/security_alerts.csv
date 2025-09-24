@@ -1,0 +1,21 @@
+Alert ID,Timestamp,Severity,Alert Type,Source IP,Target,Protocol,Action,Status,Description
+SEC-2024-0145,2024-01-15 14:23:45,Critical,Brute Force,192.168.1.45,SSH Server,SSH,Blocked,Resolved,Multiple failed login attempts detected
+SEC-2024-0144,2024-01-15 13:15:22,High,SQL Injection,203.0.113.76,Web Application,HTTPS,Monitored,Active,Suspicious SQL patterns in request parameters
+SEC-2024-0143,2024-01-15 12:45:18,Medium,Port Scan,10.0.0.234,Network Range,TCP,Logged,Investigating,Sequential port scanning detected on subnet
+SEC-2024-0142,2024-01-15 11:30:00,Low,DNS Query,172.16.0.100,External DNS,DNS,Allowed,Closed,Unusual DNS resolution patterns observed
+SEC-2024-0141,2024-01-15 10:22:33,Critical,Ransomware,192.168.10.55,File Server,SMB,Quarantined,Active,Encryption behavior detected on shared drive
+SEC-2024-0140,2024-01-15 09:15:45,High,Privilege Escalation,10.10.10.10,Domain Controller,LDAP,Blocked,Resolved,Unauthorized admin access attempt
+SEC-2024-0139,2024-01-15 08:45:12,Medium,Phishing,External,Mail Server,SMTP,Quarantined,Resolved,Suspicious email with malicious attachment
+SEC-2024-0138,2024-01-15 07:30:28,Critical,Data Exfiltration,172.20.1.15,Cloud Storage,HTTPS,Blocked,Active,Large data transfer to unauthorized destination
+SEC-2024-0137,2024-01-15 06:15:00,Low,Failed Auth,10.0.1.200,VPN Gateway,OpenVPN,Logged,Closed,Single failed authentication attempt
+SEC-2024-0136,2024-01-15 05:45:55,High,XSS Attack,198.51.100.45,Web Portal,HTTPS,Sanitized,Resolved,Cross-site scripting attempt in form input
+SEC-2024-0135,2024-01-15 04:30:18,Medium,Malware,192.168.5.78,Workstation,HTTP,Cleaned,Resolved,Trojan detected and removed by antivirus
+SEC-2024-0134,2024-01-15 03:15:42,Critical,Zero-Day,External,Application Server,HTTPS,Patched,Active,Previously unknown vulnerability exploited
+SEC-2024-0133,2024-01-15 02:00:00,Low,Config Change,10.0.0.1,Firewall,SSH,Approved,Closed,Authorized firewall rule modification
+SEC-2024-0132,2024-01-15 01:45:30,High,DDoS Attack,Multiple,Web Server,HTTP,Mitigated,Resolved,Distributed denial of service detected
+SEC-2024-0131,2024-01-15 00:30:15,Medium,Certificate,172.16.5.20,API Server,TLS,Updated,Resolved,SSL certificate approaching expiration
+SEC-2024-0130,2024-01-14 23:15:00,Critical,Insider Threat,10.10.50.75,Database,SQL,Investigated,Active,Unusual database access patterns from employee
+SEC-2024-0129,2024-01-14 22:00:45,Low,Log Anomaly,192.168.1.1,Syslog Server,Syslog,Reviewed,Closed,Unexpected gap in log entries
+SEC-2024-0128,2024-01-14 21:30:20,High,Command Injection,203.0.113.100,CI/CD Pipeline,HTTPS,Blocked,Resolved,Malicious command in build parameters
+SEC-2024-0127,2024-01-14 20:15:10,Medium,ARP Spoofing,10.0.2.45,Network Switch,ARP,Isolated,Investigating,MAC address conflict detected
+SEC-2024-0126,2024-01-14 19:00:00,Critical,APT Activity,Multiple,Infrastructure,Various,Monitoring,Active,Advanced persistent threat indicators detected
