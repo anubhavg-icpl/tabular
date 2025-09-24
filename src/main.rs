@@ -1,4 +1,4 @@
-use actix_web::{get, middleware, web, App, HttpResponse, HttpServer};
+use actix_web::{get, middleware, App, HttpResponse, HttpServer};
 use askama::Template;
 use csv::Reader;
 use std::fs::File;
@@ -18,10 +18,9 @@ fn read_csv_data(file_path: &str) -> Result<Vec<Vec<String>>, Box<dyn std::error
     let mut data = Vec::new();
 
     // Read headers first
-    if let Some(result) = csv_reader.headers() {
-        let headers: Vec<String> = result?.iter().map(|h| h.to_string()).collect();
-        data.push(headers);
-    }
+    let headers = csv_reader.headers()?;
+    let headers: Vec<String> = headers.iter().map(|h| h.to_string()).collect();
+    data.push(headers);
 
     // Read data rows
     for result in csv_reader.records() {
@@ -49,8 +48,7 @@ async fn dashboard() -> HttpResponse {
                 Ok(html) => HttpResponse::Ok().content_type("text/html").body(html),
                 Err(err) => {
                     eprintln!("Template rendering error: {}", err);
-                    HttpResponse::InternalServerError()
-                        .body("Error rendering template")
+                    HttpResponse::InternalServerError().body("Error rendering template")
                 }
             }
         }
@@ -59,8 +57,7 @@ async fn dashboard() -> HttpResponse {
             let template = DashboardTemplate { data: Vec::new() };
             match template.render() {
                 Ok(html) => HttpResponse::Ok().content_type("text/html").body(html),
-                Err(_) => HttpResponse::InternalServerError()
-                    .body("Error loading data")
+                Err(_) => HttpResponse::InternalServerError().body("Error loading data"),
             }
         }
     }
