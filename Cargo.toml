@@ -1,11 +1,14 @@
 [package]
-name = "dashboard-rs"
+name = "tabular"
 version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+authors = ["Anubhav G"]
+description = "A beautiful, modern dashboard for CSV data visualization"
+repository = "https://github.com/anubhavg-icpl/tabular"
+license = "MIT"
 
 [dependencies]
 actix-web = "4.5.1"
 askama = "0.12.1"
 csv = "1.3.0"
+env_logger = "0.11.0"
